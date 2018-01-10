@@ -49,22 +49,22 @@
 
             const rodents = svg.append("g");
 
-            rodents.selectAll("g")
-                .data( rodents_json.features )
-                .enter()
-                .append("path")
-                .attr("fill", "#900")
-                .attr("stroke", "#999")
-                .attr("d", geoPath)
-                .attr("class", "incident")
-                .on("mouseover", function(d){
-                    d3.select("h2").text(d.properties.LOCATION_STREET_NAME);
-                    d3.select(this).attr("class", "incident hover");
-                })
-                .on("mouseout", function () { 
-                    d3.select("h2").text("");
-                    d3.select(this).attr("class", "incident");
-                });
+            rodents.selectAll("path")
+                    .data(rodents_json.features)
+                    .enter()
+                    .append("path")
+                    .attr("fill", initialDate)
+                    .attr("stroke", "#ccc")
+                    .attr("d", geoPath)
+                    .attr("class", "incident")
+                    .on("mouseover", function (d) {
+                        d3.select("h2").text(d.properties.LOCATION_STREET_NAME);
+                        d3.select(this).attr("class", "incident hover");
+                    })
+                    .on("mouseout", function (d) {
+                        d3.select("h2").text("");
+                        d3.select(this).attr("class", "incident");
+                    });
 
                 d3.select("#timeslide").on("input", function(){
                     update(+this.value);
@@ -79,7 +79,7 @@
 
                 function dateMatch(data, value) {
                     const d = new Date(data.properties.OPEN_DT);
-                    const m = month[d.getMonth()];
+                    const m = MONTH[d.getMonth()];
                     if(inputValue == m) {
                         this.parentElement.appendChild(this);
                         return "red";
@@ -91,7 +91,7 @@
 
                 function initialDate(d, i) {
                     var d = new Date(d.properties.OPEN_DT);
-                    var m = month[d.getMonth()];
+                    var m = MONTH[d.getMonth()];
                     if (m == "January") {
                         this.parentElement.appendChild(this);
                         return "red";
