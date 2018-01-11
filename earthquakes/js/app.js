@@ -1,11 +1,11 @@
 
 
 /* CONSTANTS */
-const WIDTH = 1000;
-const HEIGHT = 1000;
+const WIDTH = 500;
+const HEIGHT = 500;
 let time = Date.now(),
     rotate = [10, -10],
-    velocity = [.005, -.001];
+    velocity = [.001, -.0001];
 /* D3 INFORMATION */
 
 const svg = d3.select("body")
@@ -14,11 +14,10 @@ const svg = d3.select("body")
     .attr("WIDTH", WIDTH)
     .attr("HEIGHT", HEIGHT);
 
-const g = svg.append("g")
-    .attr("class", "sphere");
+const g = svg.append("g");
 
 const projection = d3.geoOrthographic()
-    .scale(300)
+    .scale(250)
     .center([0, 15]);
 
 const geoPath = d3.geoPath()
@@ -39,8 +38,14 @@ earthquakes.selectAll("path")
     .enter()
     .append("path")
     .attr("fill", "#eee")
-    .attr("stroke", "red")
-    .attr("d", geoPath);
+    .attr("stroke", "purple")
+    .attr("d", geoPath)
+    .on("mouseover", function(d){
+        // d3.select(this).attr("r", 100);
+    })
+    .on("mouseout", function(d){
+        // console.log(d);
+    });
 
 const feature = svg.selectAll("path");
 
