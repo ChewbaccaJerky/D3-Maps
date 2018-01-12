@@ -39,18 +39,26 @@ earthquakes.selectAll("path")
     .append("path")
     .attr("fill", "#eee")
     .attr("stroke", "purple")
-    .attr("d", geoPath)
-    .on("mouseover", function(d){
-        // d3.select(this).attr("r", 100);
-    })
-    .on("mouseout", function(d){
-        // console.log(d);
-    });
+    .attr("d", geoPath);
 
-const feature = svg.selectAll("path");
+var λ = d3.scaleLinear()
+    .domain([0, WIDTH])
+    .range([-180, 180]);
 
-d3.timer(function() {
-  var dt = Date.now() - time;
-  projection.rotate([rotate[0] + velocity[0] * dt, rotate[1] + velocity[1] * dt]);
-  feature.attr("d", geoPath);
+var φ = d3.scaleLinear()
+    .domain([0, HEIGHT])
+    .range([90, -90]);
+
+svg.on("mousemove", function(d){
+    let p = d3.mouse(this);
+    projection.rotate([λ(p[0]), φ(p[1])]);
+    svg.selectAll("path").attr("d", geoPath);
 });
+
+// const feature = svg.selectAll("path");
+
+// d3.timer(function() {
+//   var dt = Date.now() - time;
+//   projection.rotate([rotate[0] + velocity[0] * dt, rotate[1] + velocity[1] * dt]);
+//   feature.attr("d", geoPath);
+// });
