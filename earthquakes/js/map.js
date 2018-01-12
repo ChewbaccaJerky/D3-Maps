@@ -24,8 +24,7 @@ const geoPath = d3
     .geoPath()
     .projection(projection);
 
-g
-    .selectAll("path")
+g.selectAll("path")
     .data(world_json.features)
     .enter()
     .append("path")
@@ -41,7 +40,28 @@ earthquakes
     .enter()
     .append("path")
     .attr("class", "point")
-    .attr("d", geoPath);
+    .attr("d", geoPath)
+    .on("mouseover", function(d){
+        d3.select(this)
+            .attr("class", "hover");
+
+        d3.select(".chart ul")
+            .append("li")
+            .attr("class", "chart-item")
+            .html(function(){
+                return "<h4>" + "Location: " + d.properties.place + "</h4>" +
+                        "<h5>" + "Magnitude: " + d.properties.mag + "</h5>";
+            });
+            // .text(function(){
+            //     return 'Location:' + d.properties.place + ' Magnitude: ' + d.properties.mag;
+            // });
+
+        console.log(d);
+    })
+    .on("mouseout", function(d){
+        d3.select(this)
+            .attr("class", "point");
+    });
 
 /* Mouse controlled interactions */
 
