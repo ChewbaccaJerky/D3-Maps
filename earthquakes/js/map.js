@@ -22,7 +22,7 @@ const g = svg.append("g");
 const projection = d3
     .geoOrthographic()
     .scale(275)
-    .center([20, 20]);
+    .center([25, 20]);
 
 // d3.select("body")
 //     .on("resize", function(){
@@ -53,8 +53,8 @@ earthquakes
     .attr("d", geoPath)
     // .transition(400)
     .on("mouseover", function(d){
-        const date = new Date();
-        const cur_time = date.toUTCString(d.properties.time);
+        const date = new Date(d.properties.time);
+        let cur_time = date;
         d3.select(this)
             .attr("class", "hover");
         d3.select(".chart ul")

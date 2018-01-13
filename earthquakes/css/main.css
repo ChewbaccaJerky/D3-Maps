@@ -12,28 +12,29 @@ html, body {
     display: flex;
     justify-content: space-around;
     flex-direction: row-reverse;
-    background-color: #EEE;
+    background-color: #111;
 }
 
 /* Globe */
 
 .map {
+    /* background-color: rgb(16, 33, 61); */
     background-color: #fff;
     margin: 1em;
     /* height: 80vh;
     width: 100vh; */
     /* border: 1px solid #000; */
-    box-shadow: -3px 3px 6px 1px #888;
+    box-shadow: -3px 3px 6px 1px #111;
     border-radius: 1em;
 }
 
 .country {
-    stroke: #888;
-    fill: #000;
+    stroke: #111;
+    fill: rgb(24, 57, 107);
 }
 
 .point {
-    stroke: #fff;
+    stroke: #000;
     fill: red;
 }
 
@@ -43,14 +44,14 @@ html, body {
 /* Chart */
 
 .chart {
-    background-color: #1d69af;
+    background-color: rgb(16, 33, 61);
     margin: 1em;
     height: 80vh;
     width: 50vw;
     display: flex;
     flex-direction: column-reverse;
     overflow-y: scroll;
-    box-shadow: -3px 3px 6px 1px #888;
+    box-shadow: -3px 3px 6px 1px #111;
     border-radius: 1em;
 }
 
@@ -70,7 +71,7 @@ html, body {
     list-style: none;
     background-color: #FFF;
     border-radius: 1em;
-    box-shadow: -1px 1px 2px 1px #888;
+    box-shadow: -1px 1px 2px 1px rgb(61, 61, 61);
 }
 
 
@@ -83,5 +84,38 @@ h4 {
 
 h4 span {
     font-size: 1em;
+    color: red;
+}
+
+h1 {
+    margin: 0;
+    padding: 1em;
+    text-align: center;
+    background-color: rgb(16, 33, 61);
+    border-bottom: 1px solid #111;
+    color: #eee;
+    font-size: 2em;
+}
+
+h1 span {
+    color: red;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    background-color: #000;
+}
+
+.footer a {
+    text-decoration: none;
+    margin: 0 1em;
+    color: #FFF;
+    transition: all 0.5s;
+}
+
+.footer a:hover {
     color: red;
 }
