@@ -44,18 +44,12 @@ earthquakes
     .on("mouseover", function(d){
         d3.select(this)
             .attr("class", "hover");
-
         d3.select(".chart ul")
             .append("li")
             .attr("class", "chart-item")
             .html(function(){
-                return "<h4>" + "Location: " + d.properties.place + "</h4>" +
-                        "<h5>" + "Magnitude: " + d.properties.mag + "</h5>";
+                return "<h4>" +  d.properties.place + "<br> <span> Mag:" + d.properties.mag + "</span>" + "</h4>";
             });
-            // .text(function(){
-            //     return 'Location:' + d.properties.place + ' Magnitude: ' + d.properties.mag;
-            // });
-
         console.log(d);
     })
     .on("mouseout", function(d){
