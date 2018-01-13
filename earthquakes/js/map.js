@@ -1,6 +1,6 @@
 /* CONSTANTS */
-const WIDTH = 500;
-const HEIGHT = 500;
+const WIDTH = innerWidth;
+const HEIGHT = innerHeight;
 let time = Date.now(),
     rotate = [
         10, -10
@@ -8,17 +8,28 @@ let time = Date.now(),
     velocity = [.01, -.0001];
 /* D3 INFORMATION */
 
+
+
 const svg = d3
-    .select("body")
+    .select(".container")
     .append("svg")
-    .attr("class", "map");
+    .attr("class", "map")
+    .attr("width", WIDTH/2)
+    .attr("height", HEIGHT * .8);
 
 const g = svg.append("g");
 
 const projection = d3
     .geoOrthographic()
-    .scale(250)
-    .center([30, 10]);
+    .scale(275)
+    .center([20, 20]);
+
+// d3.select("body")
+//     .on("resize", function(){
+//         d3.select("svg")
+//             .attr("width", WIDTH/2)
+//             .attr("height", HEIGHT * .8);
+//     });
 
 const geoPath = d3
     .geoPath()
@@ -28,8 +39,7 @@ g.selectAll("path")
     .data(world_json.features)
     .enter()
     .append("path")
-    .attr("fill", "#000")
-    .attr("stroke", "#fff")
+    .attr("class", "country")
     .attr("d", geoPath);
 
 const earthquakes = svg.append("g");
@@ -41,14 +51,22 @@ earthquakes
     .append("path")
     .attr("class", "point")
     .attr("d", geoPath)
+    // .transition(400)
     .on("mouseover", function(d){
+        const date = new Date();
+        const cur_time = date.toUTCString(d.properties.time);
         d3.select(this)
             .attr("class", "hover");
         d3.select(".chart ul")
             .append("li")
             .attr("class", "chart-item")
             .html(function(){
-                return "<h4>" +  d.properties.place + "<br> <span> Mag:" + d.properties.mag + "</span>" + "</h4>";
+                return "<h4>" +  
+                            d.properties.place + 
+                                "<br> <span> Mag: " + d.properties.mag + "</span>" + 
+                                "<br>" + cur_time + 
+                        "</h4>";
+                
             });
         console.log(d);
     })
