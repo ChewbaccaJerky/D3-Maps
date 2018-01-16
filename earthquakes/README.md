@@ -1,7 +1,7 @@
 # Earthquake Orthographic
 ![homepage](./screenshot/earthquakes.gif)
 
-Earthquake Orthographic is a frontend data application utilizing D3 and USGS earthquake API to map real-time data of daily earthquakes.
+Earthquake Orthographic is a frontend data-visualization application utilizing D3 and USGS earthquake API to map real-time data of daily earthquakes.
 
 ## Features
 
