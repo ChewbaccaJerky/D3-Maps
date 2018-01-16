@@ -12,4 +12,6 @@ Earthquake Orthographic is a frontend data-visualization application utilizing D
 
 ## Bonus
 - SVG styling
-- Heat Map of aggregate information of high concentrated areas of Earthquakes.
+- Heat Map of aggregate information of high concentrated areas of tremors.
+- Restyle homepage
+- Add more interaction
